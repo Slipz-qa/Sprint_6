@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Allure Reports
+allure-results/
+allure-report/
+
+# Pytest
+.cache
+*.coverage
+*.cover
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+*.swo
