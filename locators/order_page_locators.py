@@ -19,3 +19,4 @@ class OrderPageLocators:
     ORDER_BUTTONN = (By.XPATH, "//button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_Middle__1CSJM') and text()='Заказать']")
     CONFIRM_ORDER_BUTTON = (By.XPATH, "//button[text()='Да']")
     ORDER_MODAL_HEADER = (By.CLASS_NAME, "Order_ModalHeader__3FDaJ")
+

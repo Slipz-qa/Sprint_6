@@ -2,6 +2,7 @@ import pytest
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
 from locators.order_page_locators import OrderPageLocators
+from urls import MAIN_URL
 
 class TestOrderScooter:
     @pytest.mark.parametrize(
@@ -13,7 +14,7 @@ class TestOrderScooter:
     )
     def test_order_scooter_flow(self, driver, name, surname, address, phone):
         main_page = MainPage(driver)
-        main_page.open("https://qa-scooter.praktikum-services.ru/")
+        main_page.open(MAIN_URL)
 
         main_page.click_order_button_top()
 

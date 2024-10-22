@@ -12,3 +12,5 @@ class MainPageLocators:
 
     YANDEX_LOGO = (By.XPATH, "//img[@alt='Yandex']")
 
+    LAST_QUESTION = (By.ID, "accordion__heading-7")
+

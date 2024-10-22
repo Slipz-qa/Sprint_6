@@ -1,9 +1,7 @@
-from selenium.webdriver.common.by import By
 from pages.main_page import MainPage
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from locators.main_page_locators import MainPageLocators
 import pytest
+from urls import MAIN_URL
 
 
 class TestMainPage:
@@ -22,20 +20,16 @@ class TestMainPage:
     )
     def test_question_and_answers(self, driver, num, result):
         main_page = MainPage(driver)
-        main_page.open("https://qa-scooter.praktikum-services.ru/")
+        main_page.open(MAIN_URL)
 
-        last_question_locator = (By.ID, "accordion__heading-7")
-        main_page.scroll_to_element(last_question_locator)
+        main_page.scroll_to_element(MainPageLocators.LAST_QUESTION)
 
-        question_locator = main_page.format_locators(MainPageLocators.QUESTION_BUTTON, num)
+        main_page.click_question_button(num)
 
+        main_page.wait_for_answer_panel(num)
 
-        question_element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, question_locator)))
-
-        question_element.click()
-
-        answer_locator = MainPageLocators.ANSWER_PANEL.format(num)
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, answer_locator)))
-
-        actual_answer = driver.find_element(By.ID, answer_locator).text
+        actual_answer = main_page.get_answer_text(num)
         assert result in actual_answer, f"Ответ не соответствует ожидаемому для вопроса {num}."
+
+
+
